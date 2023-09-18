@@ -1,4 +1,4 @@
-package everylogclient
+package everylog_go_client
 
 import (
 	"encoding/json"
@@ -9,7 +9,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestEverylogclient(*testing.T) {
+func TestEveryLogClient(*testing.T) {
 	httpmock.Activate()
 
 	httpmock.RegisterResponder("POST", "https://everylog.io/api/v1/log-entries",
@@ -56,7 +56,7 @@ func TestEverylogclient(*testing.T) {
 		ExternalChannels: []string{"notify-email", "notify-slack"},
 	}
 
-	resp, err := everylogclient("c7ac9f54-5074-4513-8086-4c6a5adea34c", "prova", "https://everylog.io/api/v1/log-entries", postBody)
+	resp, err := SendToEveryLog("c7ac9f54-5074-4513-8086-4c6a5adea34c", "prova", "https://everylog.io/api/v1/log-entries", postBody)
 	if err != nil {
 		fmt.Print(err)
 	}

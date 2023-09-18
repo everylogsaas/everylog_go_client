@@ -1,4 +1,4 @@
-package everylogclient
+package everylog_go_client
 
 import (
 	"bytes"
@@ -22,17 +22,16 @@ type PostBody struct {
 	Icon             string                 `json:"icon"`
 }
 
-func everylogclient(key string, project string, url string, post_Body PostBody) (responseBody interface{}, err error) {
-	posturl := url
+func SendToEveryLog(key string, project string, url string, postBody PostBody) (responseBody interface{}, err error) {
 
-	jsonFormat, err := json.Marshal(post_Body)
+	jsonFormat, err := json.Marshal(postBody)
 	if err != nil {
 		fmt.Printf("\n MarshalError: %v \n", err)
 	}
 
 	body := []byte(fmt.Sprintf(`%v`, string(jsonFormat)))
 
-	r, err := http.NewRequest("POST", posturl, bytes.NewBuffer(body))
+	r, err := http.NewRequest("POST", url, bytes.NewBuffer(body))
 	if err != nil {
 		return nil, err
 	}

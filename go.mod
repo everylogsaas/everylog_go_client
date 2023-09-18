@@ -1,4 +1,4 @@
-module everylogclient
+module everylog_go_client
 
 go 1.19
 
