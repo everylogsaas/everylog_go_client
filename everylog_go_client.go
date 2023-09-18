@@ -1,4 +1,4 @@
-package everylog_go_client
+package client
 
 import (
 	"bytes"

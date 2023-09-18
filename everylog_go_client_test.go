@@ -1,4 +1,4 @@
-package everylog_go_client
+package client
 
 import (
 	"encoding/json"
@@ -9,7 +9,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestEveryLogClient(*testing.T) {
+func TestSendToEveryLog(*testing.T) {
 	httpmock.Activate()
 
 	httpmock.RegisterResponder("POST", "https://everylog.io/api/v1/log-entries",

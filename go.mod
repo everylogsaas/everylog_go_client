@@ -1,4 +1,4 @@
-module everylog_go_client
+module github.com/everylogsaas/everylog_go_client
 
 go 1.19
 
