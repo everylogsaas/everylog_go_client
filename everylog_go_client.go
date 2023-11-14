@@ -9,20 +9,20 @@ import (
 )
 
 type PostBody struct {
-	ProjectID        string                 `json:"projectId"`
-	Title            string                 `json:"title"`
-	Summary          string                 `json:"summary"`
-	Body             string                 `json:"body"`
-	Link             string                 `json:"link"`
-	Push             bool                   `json:"push"`
-	Tags             []string               `json:"tags"`
-	Groups           []string               `json:"groups"`
-	ExternalChannels []string               `json:"externalChannels"`
-	Properties       map[string]interface{} `json:"properties"`
-	Icon             string                 `json:"icon"`
+	ProjectID        string                   `json:"projectId"`
+	Title            string                   `json:"title"`
+	Summary          string                   `json:"summary"`
+	Body             string                   `json:"body"`
+	Link             string                   `json:"link"`
+	Push             bool                     `json:"push"`
+	Tags             []string                 `json:"tags"`
+	Groups           []string                 `json:"groups"`
+	ExternalChannels []string                 `json:"externalChannels"`
+	Properties       []map[string]interface{} `json:"properties"`
+	Icon             string                   `json:"icon"`
 }
 
-func SendToEveryLog(key string, project string, url string, postBody PostBody) (responseBody interface{}, err error) {
+func CreateLogEntry(key string, project string, url string, postBody PostBody) (responseBody interface{}, err error) {
 
 	jsonFormat, err := json.Marshal(postBody)
 	if err != nil {
