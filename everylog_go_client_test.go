@@ -9,7 +9,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestSendToEveryLog(*testing.T) {
+func TestCreateLogEntry(*testing.T) {
 	httpmock.Activate()
 
 	httpmock.RegisterResponder("POST", "https://everylog.io/api/v1/log-entries",
@@ -51,12 +51,12 @@ func TestSendToEveryLog(*testing.T) {
 		Groups:           []string{"group-1"},
 		Push:             false,
 		Tags:             []string{"tag1, tag2"},
-		Properties:       map[string]interface{}{"name": "mario", "surname": "rossi"},
+		Properties:       []map[string]interface{}{{"name": "mario", "surname": "rossi"}},
 		Icon:             "😀",
 		ExternalChannels: []string{"notify-email", "notify-slack"},
 	}
 
-	resp, err := SendToEveryLog("c7ac9f54-5074-4513-8086-4c6a5adea34c", "prova", "https://everylog.io/api/v1/log-entries", postBody)
+	resp, err := CreateLogEntry("c7ac9f54-5074-4513-8086-4c6a5adea34c", "prova", "https://everylog.io/api/v1/log-entries", postBody)
 	if err != nil {
 		fmt.Print(err)
 	}
